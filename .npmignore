@@ -1,0 +1,8 @@
+node_modules
+.idea/
+
+rollup.config.js
+tsconfig.*
+.editorconfig
+.env
+src
