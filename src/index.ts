@@ -45,6 +45,32 @@ export const useForm = (
         });
     }, [fields]);
 
+    const setError = (name: string) => (errorMessage: string) => {
+        dispatchField({
+            error: errorMessage,
+            name,
+        });
+    };
+
+    const setValue = (name: string) => (value) => {
+        const {
+            validations,
+            required = false,
+            immediatelyValidate = true,
+            type,
+            minLen,
+            maxLen,
+        } = fields[name];
+        const errorMessage = immediatelyValidate
+            ? validateField(value, validations, required, minLen, maxLen) : null;
+
+        dispatchField({
+            error: errorMessage,
+            name,
+            value: getValue(type, value),
+        });
+    };
+
     const toValid = (name: string) => {
         const {
             value,
@@ -67,7 +93,7 @@ export const useForm = (
     };
 
     const form = useMemo(
-        () => (getFormFields(fields, onChange, toValid)
+        () => (getFormFields({fields, onChange, toValid, setValue, setError})
         ), [fields, onChange],
     );
 

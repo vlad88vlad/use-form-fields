@@ -1,9 +1,9 @@
 import {
-    formSchemaType, onChangeHandlerType, toValidType,
+    formSchemaType, getFormFieldsType,
 } from './types';
 
 export const getValue = (
-    type: string = '', value: string = '', checked: boolean = false,
+    type: string = '', value: unknown = '', checked: boolean = false,
 ) => (
     type === 'checkbox' ? (checked ?? false) : (value ?? '')
 );
@@ -55,7 +55,9 @@ export const getFieldProps = ({
 );
 
 export const getFormFields = (
-    fields: formSchemaType, onChange: onChangeHandlerType, toValid: toValidType,
+    {
+        fields, onChange, toValid, setValue, setError,
+    }: getFormFieldsType,
 ) => (
     Object.keys(fields).reduce((acc, name) => ({
         ...acc,
@@ -63,6 +65,8 @@ export const getFormFields = (
             value: getValue(fields[name]?.type, fields[name].value, fields[name]?.checked),
             error: fields[name].error ?? null,
             toValid: () => toValid(name),
+            setValue: setValue(name),
+            setError: setError(name),
             ...getFieldProps(
                 {
                     type: fields[name]?.type,

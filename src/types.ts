@@ -25,13 +25,13 @@ type fieldBase = {
 }
 type inputFieldType = fieldBase & {
     type?: 'text' | 'password' | 'email' | 'range',
-    value?: string,
+    value?: string | number,
     checked?: never,
 
 }
 type radioFieldType = fieldBase & {
     type: 'radio',
-    value: string,
+    value: string | number,
     checked?: boolean,
     options: radioOptionType[]
 
@@ -41,6 +41,13 @@ type checkboxFieldType = fieldBase & {
     checked: boolean,
     value?: never
 
+}
+export type getFormFieldsType = {
+    fields: formSchemaType,
+    onChange: onChangeHandlerType,
+    toValid: toValidType,
+    setValue: (_value) => void
+    setError: (_errorMessage) => void
 }
 export type formSchemaType = {
     [key: string]: checkboxFieldType | radioFieldType | inputFieldType
@@ -55,16 +62,17 @@ export type formFields = {
             onChange: onChangeType
         },
         error?: string,
+        setValue: (_value) => void,
+        setError: (_errorMessage) => void,
         toValid?: () => void,
         radioOptions?: any[],
     }
 }
 
-
 export type useFormType = {
     form: {
         fields: formFields,
-        toJSON: () => { [key: string]: unknown },
+        toJSON: <T> () => T | { [key: string]: unknown },
         toValidate: () => boolean
     }
 }
