@@ -3,14 +3,14 @@
 To get it started, add `use-form-fields` to your project:
 
 ```shell
-npm install --save use-form-state
+npm install --save use-form-fields
 ```
 or 
 ```shell
-yarn add use-form-state --save
+yarn add use-form-fields --save
 ```
 
-Please note that `use-form-state` requires `react@>=16.8.6` as a peer dependency.
+Please note that `use-form-fields` requires `react@>=16.8.6` as a peer dependency.
 
 
 ##Form Schema
@@ -28,7 +28,7 @@ const formSchema = {
         maxLen: `number (optional)`,
         validations: `array of function`,
         fieldProps: ` native props of html element`,
-        immediatelyValidate: ` boolean (optional)`,
+        immediatelyValidate: ` bo********olean (optional)`,
         error: `string (optional`,
     }
 }
