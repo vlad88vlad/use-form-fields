@@ -28,7 +28,7 @@ const formSchema = {
         maxLen: `number (optional)`,
         validations: `array of function`,
         fieldProps: ` native props of html element`,
-        immediatelyValidate: ` bo********olean (optional)`,
+        immediatelyValidate: ` boolean (optional)`,
         error: `string (optional`,
     }
 }

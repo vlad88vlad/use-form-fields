@@ -72,7 +72,7 @@ export type formFields = {
 export type useFormType = {
     form: {
         fields: formFields,
-        toJSON: <T> () => T | { [key: string]: unknown },
+        toJSON: <T = { [key: string]: unknown }> () => T,
         toValidate: () => boolean
     }
 }
