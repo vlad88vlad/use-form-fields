@@ -53,20 +53,22 @@ export type formSchemaType = {
     [key: string]: checkboxFieldType | radioFieldType | inputFieldType
 }
 
+export type formField = {
+    fieldProps: {
+        value: string,
+        name: string,
+        required?: boolean,
+        onChange: onChangeType
+    },
+    error?: string,
+    setValue: (_value) => void,
+    setError: (_errorMessage) => void,
+    toValid?: () => void,
+    radioOptions?: any[],
+
+}
 export type formFields = {
-    [key: string]: {
-        fieldProps: {
-            value: string,
-            name: string,
-            required?: boolean,
-            onChange: onChangeType
-        },
-        error?: string,
-        setValue: (_value) => void,
-        setError: (_errorMessage) => void,
-        toValid?: () => void,
-        radioOptions?: any[],
-    }
+    [key: string]: formField
 }
 
 export type toJSONType = <T = { [key: string]: any }> () => T
