@@ -7,11 +7,11 @@ export const getValue = (
 ) => (
     type === 'checkbox' ? (checked ?? false) : (value ?? '')
 );
-export const toJSON = (fields: formSchemaType): { [key: string]: unknown } => (
+export const toJSON = <T>(fields: formSchemaType): T => (
     Object.keys(fields).reduce((acc, key) => ({
         ...acc,
         [key]: getValue(fields[key].type, fields[key].value, fields[key].checked),
-    }), {})
+    }), {}) as T
 );
 
 export const formTypeFields = {
@@ -38,8 +38,8 @@ export const formTypeFields = {
     }),
 };
 export const getFieldProps = ({
-    type = '', field, name, onChange, fieldProps,
-}) => (
+                                  type = '', field, name, onChange, fieldProps,
+                              }) => (
     formTypeFields[type]
         ? formTypeFields[type](field, name, onChange, fieldProps) : {
             fieldProps: {

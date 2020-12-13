@@ -69,10 +69,11 @@ export type formFields = {
     }
 }
 
+export type toJSONType = <T = { [key: string]: any }> () => T
 export type useFormType = {
     form: {
         fields: formFields,
-        toJSON: <T = { [key: string]: unknown }> () => T,
+        toJSON: toJSONType,
         toValidate: () => boolean
     }
 }

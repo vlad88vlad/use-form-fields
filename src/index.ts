@@ -106,7 +106,7 @@ export const useForm = (
     return {
         form: {
             fields: form,
-            toJSON: () => toJSON(fields),
+            toJSON: <T>() => toJSON<T>(fields),
             toValidate,
         },
 
