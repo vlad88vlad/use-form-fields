@@ -1,5 +1,5 @@
 import {
-    formSchemaType, getFormFieldsType,
+    formSchemaType, getFormFieldsType, formFields,
 } from './types';
 
 export const getValue = (
@@ -38,8 +38,8 @@ export const formTypeFields = {
     }),
 };
 export const getFieldProps = ({
-                                  type = '', field, name, onChange, fieldProps,
-                              }) => (
+    type = '', field, name, onChange, fieldProps,
+}) => (
     formTypeFields[type]
         ? formTypeFields[type](field, name, onChange, fieldProps) : {
             fieldProps: {
@@ -63,7 +63,7 @@ export const getFormFields = (
         ...acc,
         [name]: {
             value: getValue(fields[name]?.type, fields[name].value, fields[name]?.checked),
-            error: fields[name].error ?? null,
+            error: fields[name]?.error ?? null,
             toValid: () => toValid(name),
             setValue: setValue(name),
             setError: setError(name),
@@ -79,4 +79,4 @@ export const getFormFields = (
 
         },
     }), {})
-);
+) as formFields;

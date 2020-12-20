@@ -1,7 +1,7 @@
 import { useReducer, useCallback, useMemo } from 'react';
 import { getValue, getFormFields, toJSON } from './utils';
 import {
-    formSchemaType, useFormType, ReactOnChangeType,
+    formSchemaType, useFormType, ReactOnChangeType, valueType, valueCallbackType,
 } from './types';
 
 import { validateField } from './validateField';
@@ -52,22 +52,26 @@ export const useForm = (
         });
     };
 
-    const setValue = (name: string) => (value) => {
+    const setValue = (name: string) => (value: valueType | valueCallbackType) => {
         const {
             validations,
             required = false,
             immediatelyValidate = true,
             type,
             minLen,
+            value: prevValue,
             maxLen,
         } = fields[name];
+
+        const nextValue = typeof value === 'function' ? value({ prevValue }) : value;
+
         const errorMessage = immediatelyValidate
-            ? validateField(value, validations, required, minLen, maxLen) : null;
+            ? validateField(nextValue, validations, required, minLen, maxLen) : null;
 
         dispatchField({
             error: errorMessage,
             name,
-            value: getValue(type, value),
+            value: getValue(type, nextValue),
         });
     };
 
@@ -93,7 +97,9 @@ export const useForm = (
     };
 
     const form = useMemo(
-        () => (getFormFields({fields, onChange, toValid, setValue, setError})
+        () => (getFormFields({
+            fields, onChange, toValid, setValue, setError,
+        })
         ), [fields, onChange],
     );
 

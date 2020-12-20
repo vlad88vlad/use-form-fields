@@ -9,6 +9,10 @@ export type onChangeType = (_e: ReactOnChangeType) => void
 export type onChangeHandlerType = (_e: string) => void
 export type toValidType = (_e: string) => string | null
 
+export type valueType = string | number | boolean
+export type valueCallbackTypeArg = { prevValue: valueType }
+export type valueCallbackType = (_value: valueCallbackTypeArg) => valueType
+
 type radioOptionType = {
     option: any
 }
@@ -22,6 +26,11 @@ type fieldBase = {
     maxLen?: number,
     fieldProps?: object,
     [key: string]: unknown
+}
+type customFieldType = fieldBase & {
+    type: 'custom',
+    value: any,
+    checked?: never,
 }
 type inputFieldType = fieldBase & {
     type?: 'text' | 'password' | 'email' | 'range',
@@ -50,12 +59,13 @@ export type getFormFieldsType = {
     setError: (_errorMessage) => void
 }
 export type formSchemaType = {
-    [key: string]: checkboxFieldType | radioFieldType | inputFieldType
+    [key: string]: checkboxFieldType | radioFieldType | inputFieldType | customFieldType
 }
 
 export type formField = {
+    value: any,
     fieldProps: {
-        value: string,
+        value: any,
         name: string,
         required?: boolean,
         onChange: onChangeType
