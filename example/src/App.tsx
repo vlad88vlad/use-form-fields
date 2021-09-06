@@ -8,7 +8,7 @@ import {
 
 function App() {
     return (
-        <BrowserRouter basename={'/use-form-field'}>
+        <BrowserRouter basename={'/use-form-fields'}>
             <div className="App">
                 <Router />
             </div>

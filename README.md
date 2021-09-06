@@ -1,4 +1,5 @@
 # use-form-fields
+[Demo](https://vlad88vlad.github.io/use-form-fields)
 
 To get it started, add `use-form-fields` to your project:
 
@@ -13,7 +14,7 @@ yarn add use-form-fields --save
 Please note that `use-form-fields` requires `react@>=16.8.6` as a peer dependency.
 
 
-##Form Schema
+## Form Schema
 
 ```jsx
 import { useForm } from 'use-form-fields';
@@ -36,8 +37,8 @@ const formSchema = {
 const { form } = useForm(formSchema);
   
 ```
-###form consists of:
-#####fields 
+### form consists of:
+##### fields 
 ```ts
 {
     [key: string]: {
@@ -53,12 +54,12 @@ const { form } = useForm(formSchema);
     }
 }
 ```
-#####toJSON 
+##### toJSON 
 ```ts
 function () => return { key: value }
 ```
 
-#####toValidate 
+##### toValidate 
 ```ts
  function () => return boolean
 ```
@@ -68,6 +69,8 @@ function () => return { key: value }
 ## Examples
 
 SimpleForm
+[Demo](https://vlad88vlad.github.io/use-form-fields/simple-form)
+
 ```jsx
 import { useForm } from 'use-form-fields';
 
@@ -95,6 +98,8 @@ export const SimpleForm = () => {
 
 
 ValidationForm
+[Demo](https://vlad88vlad.github.io/use-form-fields/validation-form)
+
 ```jsx
 import { useForm } from 'use-form-fields';
 
