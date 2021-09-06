@@ -69,7 +69,7 @@ function () => return { key: value }
 ## Examples
 
 SimpleForm
-[Demo](https://vlad88vlad.github.io/use-form-fields/simple-form)
+[Demo](https://vlad88vlad.github.io/use-form-fields/#/simple-form)
 
 ```jsx
 import { useForm } from 'use-form-fields';
@@ -98,7 +98,7 @@ export const SimpleForm = () => {
 
 
 ValidationForm
-[Demo](https://vlad88vlad.github.io/use-form-fields/validation-form)
+[Demo](https://vlad88vlad.github.io/use-form-fields/#/validation-form)
 
 ```jsx
 import { useForm } from 'use-form-fields';
