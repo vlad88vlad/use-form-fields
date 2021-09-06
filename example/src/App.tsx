@@ -1,18 +1,17 @@
 import React from 'react';
 import Router from './Router';
 import './App.css';
-import Input from './components/Input'
 import {
-    BrowserRouter
+    HashRouter
 } from "react-router-dom";
 
 function App() {
     return (
-        <BrowserRouter basename={'/use-form-fields'}>
+        <HashRouter>
             <div className="App">
                 <Router />
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
