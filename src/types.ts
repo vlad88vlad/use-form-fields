@@ -33,10 +33,21 @@ type customFieldType = fieldBase & {
     checked?: never,
 }
 type inputFieldType = fieldBase & {
-    type?: 'text' | 'password' | 'email' | 'range',
+    type?: 'text' | 'password' |
+        'email' | 'range' |
+        'color' | 'search' |
+        'date' | 'datetime' |
+        'datetime-local' | 'tel' |
+        'time' | 'url' |
+        'month' | 'week' ,
     value?: string | number,
     checked?: never,
+}
 
+type numberFieldType = fieldBase & {
+    type: 'number',
+    value?: number,
+    checked?: never,
 }
 type radioFieldType = fieldBase & {
     type: 'radio',
@@ -59,7 +70,7 @@ export type getFormFieldsType = {
     setError: (_errorMessage) => void
 }
 export type formSchemaType = {
-    [key: string]: checkboxFieldType | radioFieldType | inputFieldType | customFieldType
+    [key: string]: checkboxFieldType | radioFieldType | inputFieldType | customFieldType | numberFieldType
 }
 
 export type formField = {

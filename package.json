@@ -1,6 +1,6 @@
 {
   "name": "use-form-fields",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -43,7 +43,6 @@
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@types/react": "^16.9.56",
-    "react": "^16.14.0",
     "rollup": "^2.33.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
